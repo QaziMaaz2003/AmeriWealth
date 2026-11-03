@@ -24,7 +24,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden bg-navy-950">
+    <section className="relative isolate flex min-h-[calc(100vh-73px)] items-center overflow-hidden bg-navy-950">
       <Image
         src={image}
         alt={imageAlt}

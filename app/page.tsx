@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-navy-900 bg-radial-navy">
+      <section className="relative flex min-h-[calc(100vh-73px)] items-center overflow-hidden bg-navy-900 bg-radial-navy">
         <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <div className="flex items-center gap-2.5">
@@ -66,8 +66,8 @@ export default function Home() {
               <Image
                 src="/images/craig-headshot-hd.png"
                 alt={`${site.advisorName}, ${site.advisorTitle} at ${site.businessName}`}
-                width={600}
-                height={800}
+                width={1080}
+                height={1440}
                 preload
                 className="h-auto w-full object-cover"
               />

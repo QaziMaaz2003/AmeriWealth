@@ -16,7 +16,7 @@ export default function ContactPage() {
   const nextInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden bg-navy-950">
+    <section className="relative isolate flex min-h-[calc(100vh-73px)] items-center overflow-hidden bg-navy-950">
       <Image
         src="/images/hero/contact-hero.jpg"
         alt="A couple reviewing their finances together at home"
@@ -28,7 +28,7 @@ export default function ContactPage() {
       <div className="absolute inset-0 bg-navy-950/90" />
       <div className="absolute inset-0 bg-radial-navy" />
 
-      <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-start">
+      <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:items-center">
         <div>
           <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-3 font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">
