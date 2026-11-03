@@ -12,19 +12,19 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy-100 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-900">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Logo />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-brass-600 ${
-                  active ? "text-navy-900" : "text-navy-600"
+                className={`text-sm font-medium transition-colors hover:text-brass-400 ${
+                  active ? "text-white" : "text-navy-200"
                 }`}
               >
                 {link.label}
@@ -33,17 +33,17 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-5 lg:flex">
           <a
             href={site.phoneHref}
-            className="flex items-center gap-2 text-sm font-medium text-navy-700 hover:text-brass-600"
+            className="flex items-center gap-2 text-sm font-medium text-navy-200 hover:text-brass-400"
           >
             <Phone className="h-4 w-4" />
             {site.phoneDisplay}
           </a>
           <Link
             href="/contact"
-            className="rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brass-600"
+            className="rounded-full bg-brass-400 px-5 py-2.5 text-sm font-semibold text-navy-950 transition-colors hover:bg-brass-300"
           >
             Schedule a Consultation
           </Link>
@@ -52,7 +52,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-navy-800 md:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-white lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -61,7 +61,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-navy-100 bg-white px-5 py-4 md:hidden">
+        <div className="border-t border-white/10 bg-navy-900 px-5 py-4 lg:hidden">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
@@ -69,20 +69,20 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`text-base font-medium ${
-                  pathname === link.href ? "text-navy-900" : "text-navy-600"
+                  pathname === link.href ? "text-white" : "text-navy-200"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <a href={site.phoneHref} className="flex items-center gap-2 text-base font-medium text-navy-700">
+            <a href={site.phoneHref} className="flex items-center gap-2 text-base font-medium text-navy-200">
               <Phone className="h-4 w-4" />
               {site.phoneDisplay}
             </a>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="rounded-full bg-navy-900 px-5 py-3 text-center text-sm font-semibold text-white"
+              className="rounded-full bg-brass-400 px-5 py-3 text-center text-sm font-semibold text-navy-950"
             >
               Schedule a Consultation
             </Link>

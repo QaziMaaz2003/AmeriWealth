@@ -1,164 +1,141 @@
 "use client";
 
 import { useRef } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { GeoBackdrop } from "@/components/GeoBackdrop";
+import { Briefcase, MapPin, Phone } from "lucide-react";
+import { Eyebrow } from "@/components/IconBadge";
 import { site } from "@/lib/site";
+
+const infoItems = [
+  { icon: Phone, label: "Phone", value: site.phoneDisplay, href: site.phoneHref },
+  { icon: Briefcase, label: "Firm", value: site.businessName },
+  { icon: MapPin, label: "Location", value: `${site.location}, USA` },
+];
 
 export default function ContactPage() {
   const nextInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <>
-      <section className="relative overflow-hidden">
-        <GeoBackdrop variant="light" />
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brass-600">
-            Contact
-          </p>
-          <h1 className="mt-4 max-w-2xl font-serif-display text-4xl font-semibold leading-tight text-navy-900 sm:text-5xl">
-            Let&rsquo;s talk about your retirement
+    <section className="relative overflow-hidden bg-navy-900 bg-radial-navy">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-start">
+        <div>
+          <Eyebrow>Contact</Eyebrow>
+          <h1 className="mt-3 font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">
+            Let&rsquo;s Start a Conversation About Your Financial Future.
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-navy-700">
-            Reach out by phone, email, or the form below — {site.advisorName} typically responds
-            within one business day.
+          <p className="mt-5 max-w-md text-navy-200">
+            Share a few details and {site.advisorName} will follow up to schedule a consultation
+            at a time that works for you.
           </p>
+
+          <ul className="mt-10 space-y-5">
+            {infoItems.map((item) => (
+              <li key={item.label} className="flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-brass-400">
+                  <item.icon className="h-5 w-5" />
+                </span>
+                <span>
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-navy-300">
+                    {item.label}
+                  </span>
+                  {item.href ? (
+                    <a href={item.href} className="text-base font-semibold text-white hover:text-brass-400">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="text-base font-semibold text-white">{item.value}</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-8 sm:pb-32">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="space-y-5">
-            <div className="rounded-2xl border border-navy-100 bg-mist-50 p-7">
-              <h2 className="font-serif-display text-xl font-semibold text-navy-900">
-                Get in touch
-              </h2>
-              <ul className="mt-5 space-y-4">
-                <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brass-600" />
-                  <div>
-                    <p className="text-sm font-medium text-navy-900">Phone</p>
-                    <a href={site.phoneHref} className="text-sm text-navy-600 hover:text-brass-600">
-                      {site.phoneDisplay}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brass-600" />
-                  <div>
-                    <p className="text-sm font-medium text-navy-900">Email</p>
-                    <a href={site.emailHref} className="text-sm text-navy-600 hover:text-brass-600">
-                      {site.email}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brass-600" />
-                  <div>
-                    <p className="text-sm font-medium text-navy-900">Service Area</p>
-                    <p className="text-sm text-navy-600">Serving clients across {site.location}</p>
-                  </div>
-                </li>
-              </ul>
+        <form
+          action={site.contactFormEndpoint}
+          method="POST"
+          onSubmit={() => {
+            if (nextInputRef.current) {
+              nextInputRef.current.value = `${window.location.origin}/contact/thank-you`;
+            }
+          }}
+          className="rounded-3xl bg-white p-7 shadow-2xl sm:p-9"
+        >
+          <h2 className="font-serif-display text-2xl font-semibold text-navy-900">
+            Request a Consultation
+          </h2>
+          <p className="mt-1.5 text-sm text-navy-500">
+            All fields marked with <span className="text-brass-600">*</span> are required.
+          </p>
+
+          <input type="hidden" name="_subject" value="New inquiry from AmeriWealth Financial website" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" ref={nextInputRef} defaultValue="" />
+          <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div className="sm:col-span-1">
+              <label htmlFor="name" className="text-sm font-medium text-navy-800">
+                Full name <span className="text-brass-600">*</span>
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+              />
             </div>
-
-            <div className="rounded-2xl border border-navy-100 p-7">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-navy-500">
-                {site.advisorName}
-              </h2>
-              <p className="mt-1 text-sm text-navy-600">{site.advisorTitle}</p>
-              <p className="mt-3 text-sm text-navy-600">
-                {site.credential} &middot; NPN #{site.npn}
-              </p>
+            <div className="sm:col-span-1">
+              <label htmlFor="phone" className="text-sm font-medium text-navy-800">
+                Phone
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="email" className="text-sm font-medium text-navy-800">
+                Email <span className="text-brass-600">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="message" className="text-sm font-medium text-navy-800">
+                How can we help? <span className="text-brass-600">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                required
+                placeholder="Tell us about your retirement timeline and what you would like to discuss."
+                className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+              />
             </div>
           </div>
 
-          <form
-            action={site.contactFormEndpoint}
-            method="POST"
-            onSubmit={() => {
-              if (nextInputRef.current) {
-                nextInputRef.current.value = `${window.location.origin}/contact/thank-you`;
-              }
-            }}
-            className="rounded-2xl border border-navy-100 bg-white p-7 shadow-sm shadow-navy-900/5 sm:p-9"
+          <button
+            type="submit"
+            className="mt-7 w-full rounded-full bg-navy-900 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brass-600"
           >
-            <input type="hidden" name="_subject" value="New inquiry from AmeriWealth Financial website" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" ref={nextInputRef} defaultValue="" />
-            <input
-              type="text"
-              name="_honey"
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-            />
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="sm:col-span-1">
-                <label htmlFor="name" className="text-sm font-medium text-navy-800">
-                  Full name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                  placeholder="Jane Smith"
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label htmlFor="phone" className="text-sm font-medium text-navy-800">
-                  Phone
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                  placeholder="(555) 555-5555"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="text-sm font-medium text-navy-800">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                  placeholder="jane@example.com"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="text-sm font-medium text-navy-800">
-                  How can we help?
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                  placeholder="Tell us a bit about your goals..."
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-navy-900 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brass-600 sm:w-auto"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-    </>
+            Schedule a Consultation
+          </button>
+          <p className="mt-4 text-center text-xs text-navy-500">
+            Submitting this form does not create a client relationship or obligate you to any
+            product.
+          </p>
+        </form>
+      </div>
+    </section>
   );
 }
