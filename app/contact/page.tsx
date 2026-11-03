@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Briefcase, MapPin, Phone } from "lucide-react";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { Eyebrow } from "@/components/IconBadge";
+import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 const infoItems = [
@@ -36,10 +37,13 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-radial-navy" />
 
         <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:items-center">
-          <div>
+          <Reveal>
             <Eyebrow>Contact</Eyebrow>
             <h1 className="mt-3 font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              Let&rsquo;s Start a Conversation About Your Financial Future.
+              Let&rsquo;s Start a Conversation About{" "}
+              <span className="italic text-brass-400">
+                Your Financial Future.
+              </span>
             </h1>
             <p className="mt-5 max-w-md text-navy-200">
               Share a few details and {site.advisorName} will follow up to
@@ -72,140 +76,143 @@ export default function ContactPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <form
-            action={site.contactFormEndpoint}
-            method="POST"
-            onSubmit={() => {
-              if (nextInputRef.current) {
-                nextInputRef.current.value = `${window.location.origin}/contact/thank-you`;
-              }
-            }}
-            className="rounded-3xl bg-white p-7 shadow-2xl sm:p-9"
-          >
-            <h2 className="font-serif-display text-2xl font-semibold text-navy-900">
-              Request a Consultation
-            </h2>
-            <p className="mt-1.5 text-sm text-navy-500">
-              All fields marked with <span className="text-brass-600">*</span>{" "}
-              are required.
-            </p>
-
-            <input
-              type="hidden"
-              name="_subject"
-              value="New inquiry from AmeriWealth Financial website"
-            />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input
-              type="hidden"
-              name="_next"
-              ref={nextInputRef}
-              defaultValue=""
-            />
-            <input
-              type="text"
-              name="_honey"
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-            />
-
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="name"
-                  className="text-sm font-medium text-navy-800"
-                >
-                  Full name <span className="text-brass-600">*</span>
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="phone"
-                  className="text-sm font-medium text-navy-800"
-                >
-                  Phone
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-medium text-navy-800"
-                >
-                  Email <span className="text-brass-600">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="text-sm font-medium text-navy-800"
-                >
-                  How can we help? <span className="text-brass-600">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Tell us about your retirement timeline and what you would like to discuss."
-                  className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="mt-7 w-full rounded-full bg-navy-900 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brass-600"
+          <Reveal delay={0.1}>
+            <form
+              action={site.contactFormEndpoint}
+              method="POST"
+              onSubmit={() => {
+                if (nextInputRef.current) {
+                  nextInputRef.current.value = `${window.location.origin}/contact/thank-you`;
+                }
+              }}
+              className="rounded-3xl bg-white p-7 shadow-2xl sm:p-9"
             >
-              Schedule a Consultation
-            </button>
-            <p className="mt-4 text-center text-xs text-navy-500">
-              Submitting this form does not create a client relationship or
-              obligate you to any product.
-            </p>
-          </form>
+              <h2 className="font-serif-display text-2xl font-semibold text-navy-900">
+                Request a Consultation
+              </h2>
+              <p className="mt-1.5 text-sm text-navy-500">
+                All fields marked with <span className="text-brass-600">*</span>{" "}
+                are required.
+              </p>
+
+              <input
+                type="hidden"
+                name="_subject"
+                value="New inquiry from AmeriWealth Financial website"
+              />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_next"
+                ref={nextInputRef}
+                defaultValue=""
+              />
+              <input
+                type="text"
+                name="_honey"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium text-navy-800"
+                  >
+                    Full name <span className="text-brass-600">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+                  />
+                </div>
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium text-navy-800"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-medium text-navy-800"
+                  >
+                    Email <span className="text-brass-600">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="text-sm font-medium text-navy-800"
+                  >
+                    How can we help? <span className="text-brass-600">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    placeholder="Tell us about your retirement timeline and what you would like to discuss."
+                    className="mt-2 w-full rounded-lg border border-navy-200 px-4 py-2.5 text-sm text-navy-900 outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="mt-7 w-full rounded-full bg-navy-900 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brass-600"
+              >
+                Schedule a Consultation
+              </button>
+              <p className="mt-4 text-center text-xs text-navy-500">
+                Submitting this form does not create a client relationship or
+                obligate you to any product.
+              </p>
+            </form>
+          </Reveal>
         </div>
       </section>
 
       {/* Calendly scheduling */}
       <section className="mx-auto max-w-4xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="text-center">
+        <Reveal className="text-center">
           <Eyebrow>Schedule Directly</Eyebrow>
           <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-            Prefer to Pick a Time Yourself?
+            Prefer to{" "}
+            <span className="italic text-brass-600">Pick a Time Yourself?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-navy-600">
             Book a consultation directly on {site.advisorName}&rsquo;s calendar
             — no back-and-forth required.
           </p>
-        </div>
-        <div className="mt-10">
+        </Reveal>
+        <Reveal delay={0.1} className="mt-10">
           <CalendlyEmbed />
-        </div>
+        </Reveal>
       </section>
     </>
   );

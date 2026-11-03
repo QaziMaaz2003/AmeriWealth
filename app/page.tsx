@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { Eyebrow } from "@/components/IconBadge";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import {
   aboutFeatures,
@@ -18,7 +19,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[calc(100vh-73px)] items-center overflow-hidden bg-navy-900 bg-radial-navy">
         <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div>
+          <Reveal>
             <div className="flex items-center gap-2.5">
               <span className="h-px w-8 bg-brass-400" />
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brass-400">
@@ -32,8 +33,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
-              Discover retirement-focused strategies and personalized guidance designed to help
-              you make informed decisions about your financial future.
+              Discover retirement-focused strategies and personalized guidance
+              designed to help you make informed decisions about your financial
+              future.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
@@ -59,9 +61,9 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <div className="relative mx-auto w-full max-w-sm">
+          <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm">
             <div className="overflow-hidden rounded-[1.75rem] border-2 border-brass-400 bg-navy-800 shadow-2xl shadow-navy-950/40">
               <Image
                 src="/images/craig-headshot-hd.png"
@@ -87,29 +89,37 @@ export default function Home() {
                 {site.phoneDisplay}
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* About teaser */}
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
+          <Reveal>
             <Eyebrow>About AmeriWealth Financial</Eyebrow>
             <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              A Thoughtful Approach to Retirement Preparation
+              A Thoughtful Approach to{" "}
+              <span className="italic text-brass-600">
+                Retirement Preparation
+              </span>
             </h2>
-          </div>
-          <div className="space-y-5 text-navy-600 leading-relaxed">
+          </Reveal>
+          <Reveal
+            delay={0.1}
+            className="space-y-5 text-navy-600 leading-relaxed"
+          >
             <p>
-              AmeriWealth Financial was built around a simple belief: good retirement decisions
-              come from understanding your options, not from rushed recommendations. We take the
-              time to learn how you live, what you hope retirement will look like, and what
-              concerns you most about the years ahead.
+              AmeriWealth Financial was built around a simple belief: good
+              retirement decisions come from understanding your options, not
+              from rushed recommendations. We take the time to learn how you
+              live, what you hope retirement will look like, and what concerns
+              you most about the years ahead.
             </p>
             <p>
-              Our work centers on retirement preparation, helping individuals understand their
-              financial choices and how income, savings, and protection fit together.
+              Our work centers on retirement preparation, helping individuals
+              understand their financial choices and how income, savings, and
+              protection fit together.
             </p>
             <Link
               href="/about"
@@ -118,32 +128,39 @@ export default function Home() {
               Read more about our approach
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <RevealGroup className="mt-12 grid gap-6 sm:grid-cols-3">
           {aboutFeatures.map((feature) => (
-            <div key={feature.title} className="rounded-2xl bg-mist-100 p-7">
+            <RevealItem
+              key={feature.title}
+              className="group rounded-2xl bg-mist-100 p-7"
+            >
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy-800 text-brass-400">
                 <ServiceIcon icon={feature.icon} className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-serif-display text-xl font-semibold text-navy-900">
+              <h3 className="relative mt-5 inline-block font-serif-display text-xl font-semibold text-navy-900">
                 {feature.title}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-brass-500 transition-all duration-300 group-hover:w-full" />
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-navy-600">{feature.description}</p>
-            </div>
+              <p className="mt-2.5 text-sm leading-relaxed text-navy-600">
+                {feature.description}
+              </p>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       {/* Services preview */}
       <section className="bg-mist-50">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-xl">
               <Eyebrow>What We Do</Eyebrow>
               <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-                Four Ways We Help You Prepare
+                Four Ways We Help{" "}
+                <span className="italic text-brass-600">You Prepare</span>
               </h2>
             </div>
             <Link
@@ -153,56 +170,74 @@ export default function Home() {
               View all services
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {serviceCategories.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="group flex flex-col rounded-2xl bg-white p-6 shadow-sm shadow-navy-900/5 transition-shadow hover:shadow-md"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mist-100 text-navy-800 group-hover:bg-navy-800 group-hover:text-brass-400">
-                  <ServiceIcon icon={service.icon} className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-serif-display text-lg font-semibold text-navy-900">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-600">{service.description}</p>
-              </Link>
+              <RevealItem key={service.title}>
+                <Link
+                  href={service.href}
+                  className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm shadow-navy-900/5 transition-shadow hover:shadow-md"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mist-100 text-navy-800 group-hover:bg-navy-800 group-hover:text-brass-400">
+                    <ServiceIcon icon={service.icon} className="h-5 w-5" />
+                  </div>
+                  <h3 className="relative mt-4 inline-block self-start font-serif-display text-lg font-semibold text-navy-900">
+                    {service.title}
+                    <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-brass-500 transition-all duration-300 group-hover:w-full" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-navy-600">
+                    {service.description}
+                  </p>
+                </Link>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
       {/* Philosophy */}
       <section className="relative overflow-hidden bg-navy-900 bg-radial-navy">
         <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28">
-          <Eyebrow>Our Philosophy</Eyebrow>
-          <h2 className="mt-3 font-serif-display text-3xl font-semibold text-white sm:text-4xl">
-            Preparation Is the Foundation of Confidence
-          </h2>
-          <p className="mt-8 font-serif-display text-xl italic leading-relaxed text-navy-100 sm:text-2xl">
-            &ldquo;Retirement is not a single date on the calendar. It is a transition shaped by
-            decisions made years in advance.&rdquo;
-          </p>
+          <Reveal>
+            <Eyebrow>Our Philosophy</Eyebrow>
+            <h2 className="mt-3 font-serif-display text-3xl font-semibold text-white sm:text-4xl">
+              Preparation Is the{" "}
+              <span className="italic text-brass-400">
+                Foundation of Confidence
+              </span>
+            </h2>
+            <p className="mt-8 font-serif-display text-xl italic leading-relaxed text-navy-100 sm:text-2xl">
+              &ldquo;Retirement is not a single date on the calendar. It is a
+              transition shaped by decisions made years in advance.&rdquo;
+            </p>
+          </Reveal>
 
-          <div className="mt-14 grid gap-8 text-left sm:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-8 text-left sm:grid-cols-3">
             {philosophySteps.map((step, i) => (
-              <div key={step.title} className="border-t border-brass-400/40 pt-5">
-                <span className="text-sm font-semibold text-brass-400">0{i + 1}</span>
-                <h3 className="mt-2 text-lg font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-300">{step.description}</p>
-              </div>
+              <RevealItem
+                key={step.title}
+                className="border-t border-brass-400/40 pt-5"
+              >
+                <span className="text-sm font-semibold text-brass-400">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-2 text-lg font-semibold text-white">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-300">
+                  {step.description}
+                </p>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
       {/* Lifestyle / life stages */}
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="overflow-hidden rounded-3xl">
+          <Reveal className="overflow-hidden rounded-3xl border-2 border-brass-400">
             <Image
               src="/images/hero/home-lifestyle.jpg"
               alt="A retired couple laughing together at home"
@@ -210,20 +245,25 @@ export default function Home() {
               height={1000}
               className="h-full w-full object-cover"
             />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <Eyebrow>Financial Future Preparation</Eyebrow>
             <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              Preparing for Every Stage of Life
+              Preparing for{" "}
+              <span className="italic text-brass-600">Every Stage of Life</span>
             </h2>
             <p className="mt-4 leading-relaxed text-navy-600">
-              The right priorities change over time. Knowing where you are in the journey makes it
-              easier to focus on the decisions that matter most right now.
+              The right priorities change over time. Knowing where you are in
+              the journey makes it easier to focus on the decisions that matter
+              most right now.
             </p>
 
             <dl className="mt-8 grid gap-6 sm:grid-cols-2">
               {lifeStages.map((stage) => (
-                <div key={stage.phase} className="border-l-2 border-brass-400 pl-4">
+                <div
+                  key={stage.phase}
+                  className="border-l-2 border-brass-400 pl-4"
+                >
                   <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-brass-600">
                     {stage.phase}
                   </dt>
@@ -244,20 +284,23 @@ export default function Home() {
               Explore retirement planning
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="flex flex-col items-start gap-8 rounded-3xl bg-mist-100 p-10 sm:p-14 lg:flex-row lg:items-center lg:justify-between">
+        <Reveal className="flex flex-col items-start gap-8 rounded-3xl bg-mist-100 p-10 sm:p-14 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
-              Let&rsquo;s Start a Conversation
+              Let&rsquo;s{" "}
+              <span className="italic text-brass-600">
+                Start a Conversation
+              </span>
             </h2>
             <p className="mt-3 max-w-xl text-navy-600">
-              Share a few details and {site.advisorName} will follow up to schedule a consultation
-              at a time that works for you.
+              Share a few details and {site.advisorName} will follow up to
+              schedule a consultation at a time that works for you.
             </p>
           </div>
           <Link
@@ -267,7 +310,7 @@ export default function Home() {
             Schedule a Consultation
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

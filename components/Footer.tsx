@@ -68,9 +68,20 @@ export function Footer() {
             professionals regarding your specific situation. {site.advisorName} is licensed in
             Life, Accident and Health insurance and holds a {site.credential} designation.
           </p>
-          <p className="mt-4">
-            &copy; {year} {site.businessName}. All rights reserved. NPN #{site.npn}
-          </p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              &copy; {year} {site.businessName}. All rights reserved. NPN #{site.npn}
+            </p>
+            <div className="flex items-center gap-4">
+              <Link href="/privacy-policy" className="hover:text-brass-400">
+                Privacy Policy
+              </Link>
+              <span className="text-navy-700">&middot;</span>
+              <Link href="/disclaimer" className="hover:text-brass-400">
+                Website Disclaimer
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
