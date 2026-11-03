@@ -10,13 +10,18 @@ const exploreLinks = [
   { href: "/education#faq", label: "Frequently Asked Questions" },
 ];
 
+const legalLinks = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/disclaimer", label: "Website Disclaimer" },
+];
+
 const year = 2026;
 
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-white/10 bg-navy-900 text-navy-200">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_0.9fr_0.9fr_0.8fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-navy-300">
@@ -57,6 +62,19 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <h3 className="font-serif-display text-lg font-semibold text-white">Legal</h3>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-navy-300 hover:text-brass-400">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-xs leading-relaxed text-navy-400">
@@ -68,20 +86,9 @@ export function Footer() {
             professionals regarding your specific situation. {site.advisorName} is licensed in
             Life, Accident and Health insurance and holds a {site.credential} designation.
           </p>
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p>
-              &copy; {year} {site.businessName}. All rights reserved. NPN #{site.npn}
-            </p>
-            <div className="flex items-center gap-4">
-              <Link href="/privacy-policy" className="hover:text-brass-400">
-                Privacy Policy
-              </Link>
-              <span className="text-navy-700">&middot;</span>
-              <Link href="/disclaimer" className="hover:text-brass-400">
-                Website Disclaimer
-              </Link>
-            </div>
-          </div>
+          <p className="mt-4">
+            &copy; {year} {site.businessName}. All rights reserved. NPN #{site.npn}
+          </p>
         </div>
       </div>
     </footer>
