@@ -62,7 +62,7 @@ export default function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-sm">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-navy-800 shadow-2xl shadow-navy-950/40">
+            <div className="overflow-hidden rounded-[1.75rem] border-2 border-brass-400 bg-navy-800 shadow-2xl shadow-navy-950/40">
               <Image
                 src="/images/craig-headshot-hd.png"
                 alt={`${site.advisorName}, ${site.advisorTitle} at ${site.businessName}`}

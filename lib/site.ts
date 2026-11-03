@@ -10,6 +10,10 @@ export const site = {
   contactFormEndpoint: "https://formsubmit.co/ameriwealth07@gmail.com",
   npn: "15319354",
   location: "Texas",
+  // Set to the full Calendly scheduling link once available, e.g.
+  // "https://calendly.com/craig-ameriwealth/consultation". Leave empty to
+  // show the "coming soon" placeholder on the Contact page instead.
+  calendlyUrl: "",
 } as const;
 
 export const navLinks = [
