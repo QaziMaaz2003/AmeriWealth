@@ -3,14 +3,21 @@ import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { Eyebrow } from "@/components/IconBadge";
 import { ServiceIcon } from "@/components/ServiceIcon";
-import { aboutFeatures, heroStats, philosophySteps, site } from "@/lib/site";
+import {
+  aboutFeatures,
+  heroStats,
+  lifeStages,
+  philosophySteps,
+  serviceCategories,
+  site,
+} from "@/lib/site";
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-navy-900 bg-radial-navy">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-navy-900 bg-radial-navy">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <div className="flex items-center gap-2.5">
               <span className="h-px w-8 bg-brass-400" />
@@ -129,6 +136,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services preview */}
+      <section className="bg-mist-50">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-xl">
+              <Eyebrow>What We Do</Eyebrow>
+              <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+                Four Ways We Help You Prepare
+              </h2>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-navy-800 hover:text-brass-600"
+            >
+              View all services
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {serviceCategories.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group flex flex-col rounded-2xl bg-white p-6 shadow-sm shadow-navy-900/5 transition-shadow hover:shadow-md"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mist-100 text-navy-800 group-hover:bg-navy-800 group-hover:text-brass-400">
+                  <ServiceIcon icon={service.icon} className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 font-serif-display text-lg font-semibold text-navy-900">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-600">{service.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy */}
       <section className="relative overflow-hidden bg-navy-900 bg-radial-navy">
         <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28">
@@ -149,6 +195,55 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-relaxed text-navy-300">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle / life stages */}
+      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="overflow-hidden rounded-3xl">
+            <Image
+              src="/images/hero/home-lifestyle.jpg"
+              alt="A retired couple laughing together at home"
+              width={800}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div>
+            <Eyebrow>Financial Future Preparation</Eyebrow>
+            <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+              Preparing for Every Stage of Life
+            </h2>
+            <p className="mt-4 leading-relaxed text-navy-600">
+              The right priorities change over time. Knowing where you are in the journey makes it
+              easier to focus on the decisions that matter most right now.
+            </p>
+
+            <dl className="mt-8 grid gap-6 sm:grid-cols-2">
+              {lifeStages.map((stage) => (
+                <div key={stage.phase} className="border-l-2 border-brass-400 pl-4">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-brass-600">
+                    {stage.phase}
+                  </dt>
+                  <dd className="mt-1 font-serif-display text-lg font-semibold text-navy-900">
+                    {stage.title}
+                  </dd>
+                  <dd className="mt-1 text-sm leading-relaxed text-navy-600">
+                    {stage.description}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <Link
+              href="/services#retirement-planning"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy-800 hover:text-brass-600"
+            >
+              Explore retirement planning
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

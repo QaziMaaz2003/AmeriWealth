@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { Briefcase, MapPin, Phone } from "lucide-react";
 import { Eyebrow } from "@/components/IconBadge";
 import { site } from "@/lib/site";
@@ -15,8 +16,19 @@ export default function ContactPage() {
   const nextInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <section className="relative overflow-hidden bg-navy-900 bg-radial-navy">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-start">
+    <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden bg-navy-950">
+      <Image
+        src="/images/hero/contact-hero.jpg"
+        alt="A couple reviewing their finances together at home"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-navy-950/90" />
+      <div className="absolute inset-0 bg-radial-navy" />
+
+      <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-start">
         <div>
           <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-3 font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">

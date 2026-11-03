@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { Eyebrow } from "@/components/IconBadge";
+import { PageHero } from "@/components/PageHero";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { aboutFeatures, craigPoints, site, whyChooseUs } from "@/lib/site";
 
@@ -14,14 +15,22 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <PageHero
+        image="/images/hero/about-hero.jpg"
+        imageAlt="Two professionals shaking hands over a signed agreement"
+        eyebrow="About Us"
+        title="A Partner for Every Stage of Your Retirement Journey"
+        description={`${site.businessName} was built on a simple idea: good decisions come from understanding your options, not from rushed recommendations.`}
+      />
+
       {/* About AmeriWealth */}
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <Eyebrow>About AmeriWealth Financial</Eyebrow>
-            <h1 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+            <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
               A Thoughtful Approach to Retirement Preparation
-            </h1>
+            </h2>
           </div>
           <div className="space-y-5 text-navy-600 leading-relaxed">
             <p>

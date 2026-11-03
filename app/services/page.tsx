@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, DollarSign, Shield, ShieldPlus } from "lucide-react";
 import { Eyebrow, NumberBadge } from "@/components/IconBadge";
+import { PageHero } from "@/components/PageHero";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import {
   incomeSources,
@@ -21,13 +22,23 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
+      <PageHero
+        image="/images/hero/services-hero.jpg"
+        imageAlt="Financial planning documents and charts spread across a desk"
+        eyebrow="Our Services"
+        title="Retirement Strategies Built Around Your Life"
+        description="From income planning to wealth protection, every service starts with the same question: what does your retirement actually need to look like?"
+        ctaLabel="See the Process"
+        ctaHref="#process"
+      />
+
       {/* Retirement Planning */}
       <section id="retirement-planning" className="scroll-mt-20 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="max-w-2xl">
           <Eyebrow>Retirement Planning</Eyebrow>
-          <h1 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+          <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
             Retirement Planning That Starts With Your Goals
-          </h1>
+          </h2>
           <p className="mt-4 text-navy-600">
             A sound plan answers practical questions about the years ahead: what you will need,
             when you will need it, and how your current resources line up with those needs.
@@ -50,7 +61,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Retirement Income Strategies */}
-      <section className="bg-mist-50">
+      <section id="retirement-income-strategies" className="scroll-mt-20 bg-mist-50">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-2 lg:items-center">
           <div>
             <Eyebrow>Retirement Income Strategies</Eyebrow>
@@ -91,7 +102,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Wealth Protection */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+      <section id="wealth-protection" className="scroll-mt-20 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-800 text-brass-400">
@@ -128,7 +139,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Insurance Solutions */}
-      <section className="bg-mist-50">
+      <section id="insurance-solutions" className="scroll-mt-20 bg-mist-50">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-2 lg:items-start">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-800 text-brass-400">

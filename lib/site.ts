@@ -67,6 +67,33 @@ export const aboutFeatures = [
   },
 ] as const;
 
+export const serviceCategories = [
+  {
+    icon: "clipboard-list",
+    title: "Retirement Planning",
+    description: "Turn your goals and timeline into a concrete, workable plan.",
+    href: "/services#retirement-planning",
+  },
+  {
+    icon: "line-chart",
+    title: "Income Strategies",
+    description: "Coordinate Social Security, pensions, and savings into dependable income.",
+    href: "/services#retirement-income-strategies",
+  },
+  {
+    icon: "wallet",
+    title: "Wealth Protection",
+    description: "Reduce avoidable gaps so your plan holds up when circumstances change.",
+    href: "/services#wealth-protection",
+  },
+  {
+    icon: "compass",
+    title: "Insurance Solutions",
+    description: "Coverage that fits your goals, reviewed as part of your complete plan.",
+    href: "/services#insurance-solutions",
+  },
+] as const;
+
 export const craigPoints = [
   "Listen first, so the conversation starts with your goals and concerns.",
   "Explain each option in plain language, including the tradeoffs.",

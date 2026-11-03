@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { Eyebrow } from "@/components/IconBadge";
+import { PageHero } from "@/components/PageHero";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { educationConcepts, educationalResources, site } from "@/lib/site";
@@ -15,14 +16,24 @@ export const metadata: Metadata = {
 export default function EducationPage() {
   return (
     <>
+      <PageHero
+        image="/images/hero/education-hero.jpg"
+        imageAlt="A woman reading by a sunlit window"
+        eyebrow="Financial Education"
+        title="Knowledge That Puts You in Control"
+        description="Confident retirement decisions start with understanding. Explore the concepts and resources behind the choices that matter most."
+        ctaLabel="Browse the FAQ"
+        ctaHref="#faq"
+      />
+
       {/* Financial Education */}
       <section className="bg-mist-50">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <div className="max-w-2xl">
             <Eyebrow>Financial Education</Eyebrow>
-            <h1 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+            <h2 className="mt-3 font-serif-display text-3xl font-semibold text-navy-900 sm:text-4xl">
               Understand the Concepts Behind Good Decisions
-            </h1>
+            </h2>
             <p className="mt-4 text-navy-600">
               Confident decisions start with understanding. These foundational ideas shape nearly
               every retirement conversation.
