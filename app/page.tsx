@@ -63,7 +63,7 @@ export default function Home() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm">
+          <Reveal delay={0.15} className="relative mx-auto w-full max-w-xs">
             <div className="overflow-hidden rounded-[1.75rem] border-2 border-brass-400 bg-navy-800 shadow-2xl shadow-navy-950/40">
               <Image
                 src="/images/craig-headshot-retouched.png"
