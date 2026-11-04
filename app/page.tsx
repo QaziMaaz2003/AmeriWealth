@@ -66,7 +66,7 @@ export default function Home() {
           <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm">
             <div className="overflow-hidden rounded-[1.75rem] border-2 border-brass-400 bg-navy-800 shadow-2xl shadow-navy-950/40">
               <Image
-                src="/images/craig-headshot-hd.png"
+                src="/images/craig-headshot-retouched.png"
                 alt={`${site.advisorName}, ${site.advisorTitle} at ${site.businessName}`}
                 width={1080}
                 height={1440}

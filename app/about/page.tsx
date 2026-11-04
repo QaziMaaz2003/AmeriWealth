@@ -91,7 +91,7 @@ export default function AboutPage() {
           <Reveal className="relative mx-auto w-full max-w-xs">
             <div className="overflow-hidden rounded-[1.75rem] border-2 border-brass-400 bg-navy-800 shadow-xl shadow-navy-900/10">
               <Image
-                src="/images/craig-headshot-hd.png"
+                src="/images/craig-headshot-retouched.png"
                 alt={site.advisorName}
                 width={1080}
                 height={1440}
