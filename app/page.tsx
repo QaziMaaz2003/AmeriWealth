@@ -240,9 +240,9 @@ export default function Home() {
           <Reveal className="overflow-hidden rounded-3xl border-2 border-brass-400">
             <Image
               src="/images/hero/home-lifestyle.jpg"
-              alt="A retired couple laughing together at home"
-              width={800}
-              height={1000}
+              alt="A couple walking hand-in-hand along the beach at sunset"
+              width={966}
+              height={676}
               className="h-full w-full object-cover"
             />
           </Reveal>
