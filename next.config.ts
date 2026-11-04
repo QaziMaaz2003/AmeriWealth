@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
+        condition: {
+          path: /globals\.css$/,
+        },
       },
     },
   },
