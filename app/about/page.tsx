@@ -11,7 +11,7 @@ import { aboutFeatures, craigPoints, site, whyChooseUs } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AmeriWealth Financial and Craig Anger, Certified Financial Fiduciary and Retirement Specialist serving clients across Texas.",
+    "AmeriWealth Financial and Craig Anger, Certified Financial Fiduciary and Retirement Specialist serving clients across North America.",
 };
 
 export default function AboutPage() {

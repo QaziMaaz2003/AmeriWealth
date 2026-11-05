@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | AmeriWealth Financial",
   },
   description:
-    "Craig Anger is a Certified Financial Fiduciary and Retirement Specialist at AmeriWealth Financial, helping Texas families with retirement planning, life insurance, and investment strategy.",
+    "Craig Anger is a Certified Financial Fiduciary and Retirement Specialist at AmeriWealth Financial, helping families across North America with retirement planning, life insurance, and investment strategy.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
